@@ -1,40 +1,46 @@
 document.addEventListener("DOMContentLoaded", () => {
-
   //----------------- lecture_02 ----------------------------------//
-    const cardAdj = [{name: "c1", img: "images/c1.png"}, {name: "cpp", img: "images/cpp.png"}, 
-                     {name: "c2", img: "images/c2.png"}, {name: "fortran", img: "images/fortran.png"},
-                     {name: "c3", img: "images/c3.png"}, {name: "python", img: "images/python.png"},
-                     {name: "c4", img: "images/c4.png"}, {name: "csharp", img: "images/csharp.png"}, 
-                     {name: "c5", img: "images/c5.png"}, {name: "fortran", img: "images/fortran.png"},
-                     {name: "c6", img: "images/c6.png"}, {name: "python", img: "images/python.png"}];
-  
-    const cuadricula = document.querySelector(".cuadricula");
-    const resultado = document.querySelector("#resultado");
-    var cartasEscogidas = [];
-    var cartasEscogidasId = [];
-    var cartasGanadas = [];
-  
-  //----------------- lecture_03 ----------------------------------//  
-    function crearTablero (){
-      for (let i = 0; i < cardAdj.length; i++) { 
-        var carta = document.createElement('img');
-        carta.setAttribute('src', 'images/reverso.png'); 
-        carta.setAttribute('data-id', i); 
-        carta.addEventListener('click', voltearCarta); 
-        cuadricula.appendChild(carta); 
-      }
-    }
-  });
+  const cardAdj = [
+    { name: "c1", img: "images/c1.png" },
+    { name: "c2", img: "images/c2.png" },
+    { name: "c3", img: "images/c3.png" },
+    { name: "c4", img: "images/c4.png" },
+    { name: "c5", img: "images/c5.png" },
+    { name: "c6", img: "images/c6.png" },
+    { name: "c1", img: "images/c1.png" },
+    { name: "c2", img: "images/c2.png" },
+    { name: "c3", img: "images/c3.png" },
+    { name: "c4", img: "images/c4.png" },
+    { name: "c5", img: "images/c5.png" },
+    { name: "c6", img: "images/c6.png" }
+  ];
 
-  function voltearcarta (){
-  var cardId =this.getattribute("data-id");
-  cartasEscogidas.push (cardAdj[cardId].name);
-  cartasEscogidasId.push(cardid);
-  this.setattribute("src",cardAdj[cardid].img);
-    if (cartasEscogidas.length=== 2){
-      setTimeout(verificarpareja, 1000);
+  const cuadricula = document.querySelector(".cuadricula");
+  const resultado = document.querySelector("#resultado");
+  var cartasEscogidas = [];
+  var cartasEscogidasId = [];
+  var cartasGanadas = [];
+
+  //----------------- lecture_03 ----------------------------------//
+  function crearTablero() {
+    for (let i = 0; i < cardAdj.length; i++) {
+      var carta = document.createElement("img");
+      carta.setAttribute("src", "images/reverso.png");
+      carta.setAttribute("data-id", i);
+      carta.addEventListener("click", voltearCarta);
+      cuadricula.appendChild(carta);
     }
   }
 
-  creaetablero();
+  function voltearCarta() {
+    var cardId = this.getattribute("data-id");
+    cartasEscogidas.push(cardAdj[cardId].name);
+    cartasEscogidasId.push(cardId);
+    this.setattribute("src", cardAdj[cardId].img);
+    if (cartasEscogidas.length === 2) {
+      setTimeout(verificarPareja, 1500);
+    }
+  }
+
+  crearTablero();
 });
